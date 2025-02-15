@@ -7,6 +7,8 @@
     <modules>
         <module>common</module>
         <module>demo01</module>
+        <module>random-data</module>
+        <module>demo02</module>
     </modules>
 
     <groupId>llh.study</groupId>
@@ -45,6 +47,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.github.yindz</groupId>
+                <artifactId>common-random</artifactId>
+                <version>1.1.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
