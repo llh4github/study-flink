@@ -12,6 +12,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 /**
  * 从socket端口读取数据进行计词。
  * nc -lvp 9999
+ * nc -lk 9999
  */
 public class WordCountSocket {
     public static void main(String[] args) throws Exception {
