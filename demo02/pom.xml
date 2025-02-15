@@ -18,10 +18,24 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>llh.study</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-base</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -42,6 +56,18 @@
 
     <build>
         <plugins>
+            <!-- 配置测试阶段的 JVM 参数 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -55,7 +81,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>llh.studyflink.demo02.Main</mainClass>
+                                    <mainClass>llh.studyflink.demo02.PgsqlTaskDemo</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
